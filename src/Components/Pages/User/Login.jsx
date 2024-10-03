@@ -29,7 +29,7 @@ const Login = ({ allUsers }) => {
       };
       axios({
         method: "post",
-        url: `http://localhost:3000/users`,
+        url: import.meta.env.VITE_Users,
         data: userInfo,
       });
     }

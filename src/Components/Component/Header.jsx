@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Navbar,
   Collapse,
@@ -19,8 +19,6 @@ import {
 } from "@material-tailwind/react";
 import {
   Cog6ToothIcon,
-  InboxArrowDownIcon,
-  LifebuoyIcon,
   PowerIcon,
   UserCircleIcon,
 } from "@heroicons/react/24/solid";

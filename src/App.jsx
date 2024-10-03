@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import AdminLayout from "./Components/AdminLayout";
 import UserLayout from "./Components/UserLayout";
-import { Route, Router, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import axios from "axios";
 
 const App = () => {
   const [allUsers, setAllUsers] = useState([]);
-
   const getAllUsers = () => {
     axios({
       method: "get",
@@ -14,7 +13,6 @@ const App = () => {
     }).then((auser) => {
       setAllUsers(auser.data);
     });
-
     useEffect(() => {
       getAllUsers;
     }, []);
@@ -23,7 +21,7 @@ const App = () => {
     <>
       <Routes>
         <Route path="/*" element={<UserLayout allUsers={allUsers} />} />
-        <Route path="/admin/*" element={<AdminLayout />} />
+        <Route path="admin/*" element={<AdminLayout />} />
       </Routes>
     </>
   );
