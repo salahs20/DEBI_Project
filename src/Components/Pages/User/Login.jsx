@@ -33,13 +33,13 @@ const Login = ({ allUsers }) => {
         data: userInfo,
       });
     }
-    const loginUser = allUsers.find(
-      ({ name, password }) => user.name == name && user.password == password
-    );
-    if (loginUser) {
-      localStorage.ok = loginUser.id;
-      useNavigate("/");
-    }
+    // const loginUser = allUsers.find(
+    //   ({ name, password }) => user.name == name && user.password == password
+    // );
+    // if (loginUser) {
+    //   localStorage.ok = loginUser.id;
+    //   useNavigate("/");
+    // }
   };
   return (
     <div className="flex flex-col justify-center items-center px-[4em] gap-[4em]">
@@ -78,7 +78,7 @@ const Login = ({ allUsers }) => {
                 }
               />
             </div>
-            <Button type="submit" className="mt-6" fullWidth>
+            <Button color="green" type="submit" className="mt-6" fullWidth>
               Login
             </Button>
           </form>
