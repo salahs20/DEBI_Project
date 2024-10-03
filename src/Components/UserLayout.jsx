@@ -20,9 +20,9 @@ const UserLayout = ({ allUsers }) => {
     <>
       <Header />
       <Routes>
-        <Route path="/*" element={<Home />} />
-        <Route path="/login" element={<Login allUsers={allUsers} />} />
-        <Route path="/products" element={<AllProducts products={products} />} />
+        <Route path="/" element={<Home />} />
+        <Route path="login" element={<Login allUsers={allUsers} />} />
+        <Route path="products" element={<AllProducts products={products} />} />
       </Routes>
     </>
   );
