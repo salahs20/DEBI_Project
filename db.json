@@ -1,0 +1,49 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Salah",
+      "password": 123456,
+      "gender": "male",
+      "role": "admin"
+    },
+    {
+      "name": "mohamed",
+      "password": "111111",
+      "gender": "",
+      "id": "2Kjalc9",
+      "role": "user"
+    },
+    {
+      "name": "amin",
+      "password": "111111",
+      "gender": "",
+      "id": "6dlcBli",
+      "role": "admin"
+    },
+    {
+      "name": "ali",
+      "password": "123456",
+      "gender": "",
+      "id": "W_TYBLd"
+    },
+    {
+      "name": "sssssss",
+      "password": "5555555",
+      "gender": "",
+      "id": "Mjuv75P"
+    },
+    {
+      "name": "dddddd",
+      "password": "ccccccccc",
+      "gender": "",
+      "id": "m3ACyo7"
+    },
+    {
+      "name": "rrrrrrrrrrrrr",
+      "password": "rrrrrrrrrrrrrr",
+      "gender": "",
+      "id": "WQJbVB8"
+    }
+  ]
+}
