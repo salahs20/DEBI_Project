@@ -25,7 +25,7 @@ const Products = ({ product }) => {
               <div className="text-yellow-800">{product.ratingsAverage}</div>
             </div>
           </CardBody>
-          <Button className="m-auto w-10/12 mb-5 ">Add To Cart</Button>
+          <Button color="green" className="m-auto w-10/12 mb-5 ">Add To Cart</Button>
         </Card>
       </div>
     </>
