@@ -15,14 +15,13 @@ import {
   MenuHandler,
   MenuItem,
   MenuList,
-
 } from "@material-tailwind/react";
 import {
   Cog6ToothIcon,
   PowerIcon,
   UserCircleIcon,
 } from "@heroicons/react/24/solid";
- 
+
 // profile menu component
 const profileMenuItems = [
   {
@@ -34,7 +33,6 @@ const profileMenuItems = [
     icon: Cog6ToothIcon,
   },
 
- 
   {
     label: "Sign Out",
     icon: PowerIcon,
@@ -42,7 +40,7 @@ const profileMenuItems = [
 ];
 const NavList = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
- 
+
   const closeMenu = () => setIsMenuOpen(false);
   return (
     <ul className="my-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
@@ -85,62 +83,73 @@ const NavList = () => {
           Login
         </Link>
       </Typography>
-      <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end">
-      <MenuHandler>
-        <Button
-          variant="text"
-          color="blue-gray"
-          className="flex items-center rounded-full p-0"
+      <Typography
+        as="li"
+        variant="small"
+        color="blue-gray"
+        className="p-1 font-medium"
+      >
+        <Link
+          to="signup"
+          className="flex items-center hover:text-blue-500 transition-colors"
         >
-          <Avatar
-            variant="circular"
-            size="md"
-            alt="tania andrew"
-            withBorder={true}
+          Sign Up
+        </Link>
+      </Typography>
+      <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end">
+        <MenuHandler>
+          <Button
+            variant="text"
             color="blue-gray"
-            className=" p-0.5"
-            src="https://docs.material-tailwind.com/img/face-2.jpg"
-          />
-        </Button>
-      </MenuHandler >
-      <MenuList className="p-1">
-        {profileMenuItems.map(({ label, icon }, key) => {
-          const isLastItem = key === profileMenuItems.length - 1;
-          return (
-            <MenuItem
-              key={label}
-              onClick={closeMenu}
-              className={`flex items-center gap-2 rounded ${
-                isLastItem
-                  ? "hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10"
-                  : ""
-              }`}
-            >
-              {React.createElement(icon, {
-                className: `h-4 w-4 ${isLastItem ? "text-red-500" : ""}`,
-                strokeWidth: 2,
-              })}
-              <Typography
-                as="span"
-                variant="small"
-                className="font-normal"
-                color={isLastItem ? "red" : "inherit"}
+            className="flex items-center rounded-full p-0"
+          >
+            <Avatar
+              variant="circular"
+              size="md"
+              alt="tania andrew"
+              withBorder={true}
+              color="blue-gray"
+              className=" p-0.5"
+              src="https://docs.material-tailwind.com/img/face-2.jpg"
+            />
+          </Button>
+        </MenuHandler>
+        <MenuList className="p-1">
+          {profileMenuItems.map(({ label, icon }, key) => {
+            const isLastItem = key === profileMenuItems.length - 1;
+            return (
+              <MenuItem
+                key={label}
+                onClick={closeMenu}
+                className={`flex items-center gap-2 rounded ${
+                  isLastItem
+                    ? "hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10"
+                    : ""
+                }`}
               >
-                {label}
-              </Typography>
-            </MenuItem>
-          );
-        })}
-      </MenuList>
-    </Menu>
+                {React.createElement(icon, {
+                  className: `h-4 w-4 ${isLastItem ? "text-red-500" : ""}`,
+                  strokeWidth: 2,
+                })}
+                <Typography
+                  as="span"
+                  variant="small"
+                  className="font-normal"
+                  color={isLastItem ? "red" : "inherit"}
+                >
+                  {label}
+                </Typography>
+              </MenuItem>
+            );
+          })}
+        </MenuList>
+      </Menu>
     </ul>
   );
 };
 const Header = () => {
   const [openNav, setOpenNav] = useState(false);
 
-
-  
   return (
     <Navbar className="mx-auto max-w-screen-3xl px-6 py-3 text-black">
       <div className="flex items-center justify-between text-blue-gray-900">
