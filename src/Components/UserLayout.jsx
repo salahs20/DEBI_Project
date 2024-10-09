@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Home from "./Pages/User/Home";
 import Login from "./Pages/User/Login";
+import SignUp from "./Pages/User/signup";
 import Header from "./Component/Header";
 import { Route, Routes } from "react-router-dom";
 import AllProducts from "./Pages/User/AllProducts";
 import axios from "axios";
-import SignUp from "./Pages/User/signup";
 const UserLayout = ({ allUsers }) => {
   const [products, setProduts] = useState([]);
   const getData = () => {
