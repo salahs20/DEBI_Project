@@ -5,6 +5,7 @@ import Header from "./Component/Header";
 import { Route, Routes } from "react-router-dom";
 import AllProducts from "./Pages/User/AllProducts";
 import axios from "axios";
+import SignUp from "./Pages/User/signup";
 const UserLayout = ({ allUsers }) => {
   const [products, setProduts] = useState([]);
   const getData = () => {
@@ -22,6 +23,7 @@ const UserLayout = ({ allUsers }) => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="login" element={<Login allUsers={allUsers} />} />
+        <Route path="signup" element={<SignUp allUsers={allUsers} />} />
         <Route path="products" element={<AllProducts products={products} />} />
       </Routes>
     </>

@@ -3,6 +3,7 @@
     {
       "id": "1",
       "name": "Salah",
+      "email": "salah1111@gmail.com",
       "password": 123456,
       "gender": "male",
       "role": "admin"
@@ -10,15 +11,17 @@
     {
       "name": "mohamed",
       "password": "111111",
+      "email": "mohamed1111@gmail.com",
       "gender": "",
-      "id": "2Kjalc9",
+      "id": "2",
       "role": "user"
     },
     {
       "name": "amin",
       "password": "111111",
+      "email": "amin1111@gmail.com",
       "gender": "",
-      "id": "6dlcBli",
+      "id": "3",
       "role": "admin"
     }
   ]
