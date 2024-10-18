@@ -35,7 +35,7 @@ const UserLayout = ({ allUsers }) => {
     <>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home  products={products}/>} />
         <Route
           path="login"
           element={
