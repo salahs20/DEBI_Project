@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import axios from "axios";
 
 const App = () => {
+ 
   const [allUsers, setAllUsers] = useState([]);
   const getAllUsers = () => {
     axios({
