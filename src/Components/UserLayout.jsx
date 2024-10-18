@@ -7,22 +7,45 @@ import { Route, Routes } from "react-router-dom";
 import AllProducts from "./Pages/User/AllProducts";
 import axios from "axios";
 const UserLayout = ({ allUsers }) => {
+  const [isLoged, setIsLoged] = useState(false);
   const [products, setProduts] = useState([]);
+
   const getData = () => {
     axios({
       method: "get",
       url: import.meta.env.VITE_ALLProducts,
     }).then((data) => setProduts(data.data.data));
   };
+  const getUserDetails = () => {
+    axios({
+      method: "get",
+      url: `http://localhost:3000/users/${localStorage.id}`,
+    });
+  };
+  useEffect(() => {
+    if (isLoged) {
+      getUserDetails();
+    }
+  }, [isLoged]);
   useEffect(() => {
     getData();
   }, []);
+
   return (
     <>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="login" element={<Login allUsers={allUsers} />} />
+        <Route
+          path="login"
+          element={
+            <Login
+              allUsers={allUsers}
+              setIsLoged={setIsLoged}
+              isLoged={isLoged}
+            />
+          }
+        />
         <Route path="signup" element={<SignUp allUsers={allUsers} />} />
         <Route path="products" element={<AllProducts products={products} />} />
       </Routes>
