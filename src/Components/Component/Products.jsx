@@ -21,8 +21,8 @@ const Products = ({ product }) => {
               <h1 className="text-xl">{product.title.slice(0, 15)}....</h1>
             </div>
             <div className="flex justify-between ">
-              <div className="text-green-700">{product.price}</div>
-              <div className="text-yellow-800">{product.ratingsAverage}</div>
+              <div className="text-green-700">{product.price} EGP</div>
+              <div className="text-yellow-800">⭐ {product.ratingsAverage} </div>
             </div>
           </CardBody>
           <Button color="green" className="m-auto w-10/12 mb-5 ">Add To Cart</Button>
