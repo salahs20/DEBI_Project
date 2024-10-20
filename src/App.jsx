@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AdminLayout from "./Components/AdminLayout";
 import UserLayout from "./Components/UserLayout";
 import { Route, Routes } from "react-router-dom";
@@ -14,10 +14,11 @@ const App = () => {
     }).then((auser) => {
       setAllUsers(auser.data);
     });
-    useEffect(() => {
+    
+  };
+  useEffect(() => {
       getAllUsers;
     }, []);
-  };
   return (
     <>
       <Routes>
