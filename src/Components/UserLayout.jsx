@@ -9,33 +9,36 @@ import axios from "axios";
 const UserLayout = ({ allUsers }) => {
   const [isLoged, setIsLoged] = useState(false);
   const [products, setProduts] = useState([]);
-
+  const [user, setUser] = useState(null);
   const getData = () => {
     axios({
       method: "get",
       url: import.meta.env.VITE_ALLProducts,
     }).then((data) => setProduts(data.data.data));
   };
+
   const getUserDetails = () => {
     axios({
       method: "get",
-      url: `http://localhost:3000/users/${localStorage.id}`,
-    });
+      url: `http://localhost:3000/users/${localStorage.ok}`,
+    }).then((info) => setUser(info.data));
   };
+
   useEffect(() => {
     if (isLoged) {
       getUserDetails();
     }
   }, [isLoged]);
+
   useEffect(() => {
     getData();
   }, []);
 
   return (
     <>
-      <Header />
+      <Header isLoged={isLoged} />
       <Routes>
-        <Route path="/" element={<Home  products={products}/>} />
+        <Route path="/" element={<Home products={products} />} />
         <Route
           path="login"
           element={
@@ -46,7 +49,10 @@ const UserLayout = ({ allUsers }) => {
             />
           }
         />
-        <Route path="signup" element={<SignUp allUsers={allUsers} />} />
+        <Route
+          path="signup"
+          element={<SignUp allUsers={allUsers} setIsLoged={setIsLoged} />}
+        />
         <Route path="products" element={<AllProducts products={products} />} />
       </Routes>
     </>

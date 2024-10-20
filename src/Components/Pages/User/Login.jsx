@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Card, Input, Button, Typography } from "@material-tailwind/react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-const Login = ({ allUsers },  {setIsLoged },  isLoged ) => {
+const Login = ({ allUsers, setIsLoged }) => {
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -36,16 +36,15 @@ const Login = ({ allUsers },  {setIsLoged },  isLoged ) => {
         setIsLoged(true);
         localStorage.id = user.id;
         navigate("/");
-      });
-      
 
-      //   const loginUser = allUsers.find(
-      //   ({ email, password }) => user.email == email && user.password == password
-      // );
-      // if (loginUser) {
-      //   localStorage.ok = loginUser.id;
-      //   useNavigate("/");
-      // }
+        const loginUser = allUsers.find(
+          ({ email, password }) =>
+            user.email == email && user.password == password
+        );
+        if (loginUser) {
+          localStorage.ok = loginUser.id;
+        }
+      });
     }
   };
   return (

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Navbar,
   Collapse,
@@ -8,10 +8,9 @@ import {
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/16/solid";
 import { Link } from "react-router-dom";
 import UserProfile from "./UserProfile";
+import axios from "axios";
 
-
-const NavList = () => {
-
+const NavList = ({ isLoged }) => {
   return (
     <ul className="my-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <Typography
@@ -40,39 +39,47 @@ const NavList = () => {
           Product
         </Link>
       </Typography>
-      <Typography
+      {isLoged ? <UserProfile/> :   <Typography
         as="li"
         variant="small"
         color="blue-gray"
         className="p-1 font-medium"
       >
-        <Link
+        <div className="flex gap-5"> 
+
+            <Link
           to="login"
           className="flex items-center hover:text-blue-500 transition-colors"
         >
           Login
         </Link>
-      </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-medium"
-      >
+
         <Link
           to="signup"
           className="flex items-center hover:text-blue-500 transition-colors"
         >
           Sign Up
         </Link>
-      </Typography>
-     <UserProfile/>
+        </div>
+      
+      </Typography>}
+    
     </ul>
   );
 };
-const Header = () => {
+const Header = ({ isLoged }) => {
   const [openNav, setOpenNav] = useState(false);
+  // const [user,setUser]=useState(localStorage.ok)
+  // const getUserDetails = () => {
+  //   axios({
+  //     method: "get",
+  //     url: `http://localhost:3000/users/${localStorage.ok}`,
+  //   }).then((info)=>setUser(info.data));
 
+  // };
+  // useEffect(()=>{
+  //   getUserDetails()
+  // },[])
   return (
     <Navbar className="mx-auto max-w-screen-3xl px-6 py-3 text-black">
       <div className="flex items-center justify-between text-blue-gray-900">
@@ -80,7 +87,7 @@ const Header = () => {
           E_Commerce
         </Link>
         <div className="hidden lg:block">
-          <NavList />
+          <NavList isLoged={isLoged} />
         </div>
         <IconButton
           variant="text"
@@ -96,7 +103,7 @@ const Header = () => {
         </IconButton>
       </div>
       <Collapse open={openNav}>
-        <NavList />
+        <NavList isLoged={isLoged} />
       </Collapse>
     </Navbar>
   );
