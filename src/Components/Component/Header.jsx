@@ -8,7 +8,6 @@ import {
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/16/solid";
 import { Link } from "react-router-dom";
 import UserProfile from "./UserProfile";
-import axios from "axios";
 
 const NavList = ({ isLoged }) => {
   return (
@@ -39,55 +38,46 @@ const NavList = ({ isLoged }) => {
           Product
         </Link>
       </Typography>
-      {isLoged ? <UserProfile/> :   <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-medium"
-      >
-        <div className="flex gap-5"> 
-
-            <Link
-          to="login"
-          className="flex items-center hover:text-blue-500 transition-colors"
-        >
-          Login
-        </Link>
-
-        <Link
-          to="signup"
-          className="flex items-center hover:text-blue-500 transition-colors"
-        >
-          Sign Up
-        </Link>
-        </div>
-      
-      </Typography>}
-    
     </ul>
   );
 };
 const Header = ({ isLoged }) => {
   const [openNav, setOpenNav] = useState(false);
-  // const [user,setUser]=useState(localStorage.ok)
-  // const getUserDetails = () => {
-  //   axios({
-  //     method: "get",
-  //     url: `http://localhost:3000/users/${localStorage.ok}`,
-  //   }).then((info)=>setUser(info.data));
-
-  // };
-  // useEffect(()=>{
-  //   getUserDetails()
-  // },[])
   return (
-    <Navbar className="mx-auto max-w-screen-3xl px-6 py-3 text-black">
+    <Navbar className="mx-auto max-w-screen-3xl px-6 py-3 text-black  ">
       <div className="flex items-center justify-between text-blue-gray-900">
-        <Link to="/" className="mr-4 cursor-pointer py-1.5 text-3xl">
+        <Link to="/" className="mr-4 cursor-pointer py-1.5 text-3xl ">
           E_Commerce
         </Link>
         <div className="hidden lg:block">
           <NavList isLoged={isLoged} />
+        </div>
+        <div className="">
+          {isLoged ? (
+            <UserProfile />
+          ) : (
+            <Typography
+              as="li"
+              variant="small"
+              color="blue-gray"
+              className="p-1 font-medium"
+            >
+              <div className="flex gap-5">
+                <Link
+                  to="login"
+                  className="flex items-center hover:text-blue-500 transition-colors"
+                >
+                  Login
+                </Link>
+                <Link
+                  to="signup"
+                  className="flex items-center hover:text-blue-500 transition-colors"
+                >
+                  Sign Up
+                </Link>
+              </div>
+            </Typography>
+          )}
         </div>
         <IconButton
           variant="text"
