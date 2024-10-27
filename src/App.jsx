@@ -10,7 +10,7 @@ const App = () => {
   const getAllUsers = () => {
     axios({
       method: "get",
-      url: import.meta.env.VITE_Users,
+      url: `http://localhost:3000/users`,
     }).then((auser) => {
       setAllUsers(auser.data);
     });

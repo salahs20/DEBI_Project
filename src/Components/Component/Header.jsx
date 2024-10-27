@@ -38,21 +38,7 @@ const NavList = ({ isLoged }) => {
           Product
         </Link>
       </Typography>
-    </ul>
-  );
-};
-const Header = ({ isLoged }) => {
-  const [openNav, setOpenNav] = useState(false);
-  return (
-    <Navbar className="mx-auto max-w-screen-3xl px-6 py-3 text-black  ">
-      <div className="flex items-center justify-between text-blue-gray-900">
-        <Link to="/" className="mr-4 cursor-pointer py-1.5 text-3xl ">
-          E_Commerce
-        </Link>
-        <div className="hidden lg:block">
-          <NavList isLoged={isLoged} />
-        </div>
-        <div className="">
+      <div className="">
           {isLoged ? (
             <UserProfile />
           ) : (
@@ -62,7 +48,7 @@ const Header = ({ isLoged }) => {
               color="blue-gray"
               className="p-1 font-medium"
             >
-              <div className="flex gap-5">
+              <div className="flex gap-5 flex-col lg:flex-row">
                 <Link
                   to="login"
                   className="flex items-center hover:text-blue-500 transition-colors"
@@ -79,6 +65,21 @@ const Header = ({ isLoged }) => {
             </Typography>
           )}
         </div>
+    </ul>
+  );
+};
+const Header = ({ isLoged }) => {
+  const [openNav, setOpenNav] = useState(false);
+  return (
+    <Navbar className="mx-auto max-w-screen-3xl px-6 py-3 text-black  ">
+      <div className="flex items-center justify-between text-blue-gray-900">
+        <Link to="/" className="mr-4 cursor-pointer py-1.5 text-3xl ">
+          E_Commerce
+        </Link>
+        <div className="hidden lg:block">
+          <NavList isLoged={isLoged} />
+        </div>
+     
         <IconButton
           variant="text"
           className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
