@@ -73,7 +73,7 @@ const Header = ({ isLoged }) => {
   return (
     <Navbar className="mx-auto max-w-screen-3xl px-6 py-3 text-black  ">
       <div className="flex items-center justify-between text-blue-gray-900">
-        <Link to="/" className="mr-4 cursor-pointer py-1.5 text-3xl ">
+        <Link to="/" className="mr-4 cursor-pointer py-1.5 text-2xl lg:text-3xl ">
           E_Commerce
         </Link>
         <div className="hidden lg:block">
