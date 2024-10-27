@@ -13,7 +13,7 @@ const UserLayout = ({ allUsers }) => {
   const getData = () => {
     axios({
       method: "get",
-      url: import.meta.env.VITE_ALLProducts,
+      url: `https://ecommerce.routemisr.com/api/v1/products`,
     }).then((data) => setProduts(data.data.data));
   };
 
