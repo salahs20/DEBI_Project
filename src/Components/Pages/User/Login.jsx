@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Card, Input, Button, Typography } from "@material-tailwind/react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+
 const Login = ({ allUsers, setIsLoged }) => {
   const [user, setUser] = useState({
     email: "",
@@ -10,16 +11,18 @@ const Login = ({ allUsers, setIsLoged }) => {
   const navigate = useNavigate();
   const [checkEmail, setCheckEmail] = useState(false);
   const [checkPassword, setCheckPassword] = useState(false);
+
   const reset = () => {
     setCheckEmail(false);
     setCheckPassword(false);
   };
+
   const handelForm = (e) => {
     e.preventDefault();
-    if (user.email == "") {
+    if (user.email === "") {
       reset();
       setCheckEmail(true);
-    } else if (user.password == "") {
+    } else if (user.password === "") {
       reset();
       setCheckPassword(true);
     } else {
@@ -39,7 +42,7 @@ const Login = ({ allUsers, setIsLoged }) => {
 
         const loginUser = allUsers.find(
           ({ email, password }) =>
-            user.email == email && user.password == password
+            user.email === email && user.password === password
         );
         if (loginUser) {
           localStorage.ok = loginUser.id;
@@ -47,8 +50,9 @@ const Login = ({ allUsers, setIsLoged }) => {
       });
     }
   };
+
   return (
-    <div className="flex flex-col justify-center items-center px-[4em] gap-[4em]">
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div>
         <Card color="transparent" shadow={false}>
           <Typography variant="h4" color="blue-gray">
