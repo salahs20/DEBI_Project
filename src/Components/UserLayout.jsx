@@ -13,14 +13,14 @@ const UserLayout = ({ allUsers }) => {
   const getData = () => {
     axios({
       method: "get",
-      url: `https://ecommerce.routemisr.com/api/v1/products`,
+      url: import.meta.env.VITE_ALLProducts,
     }).then((data) => setProduts(data.data.data));
   };
 
   const getUserDetails = () => {
     axios({
       method: "get",
-      url: `http://localhost:3000/users/${localStorage.ok}`,
+      url: `https://brainy-talented-jackal.glitch.me/users/${localStorage.ok}`,
     }).then((info) => setUser(info.data));
   };
 
