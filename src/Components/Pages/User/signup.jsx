@@ -83,7 +83,7 @@ const SignUp = ({ allUsers }) => {
 
           // Send a POST request to add the new user to the JSON server
           const response = await axios.post(
-            "http://localhost:5000/users",
+           import.meta.env.VITE_Users,
             newUser
           );
 
