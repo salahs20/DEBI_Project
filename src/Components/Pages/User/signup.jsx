@@ -8,7 +8,7 @@ import {
   Option,
 } from "@material-tailwind/react";
 import axios from "axios";
-// import { v4 as uuidv4 } from "uuid"; // Ensure uuid is imported
+import { v4 as uuidv4 } from "uuid"; // Ensure uuid is imported
 import { useNavigate } from "react-router-dom";
 
 const SignUp = ({ allUsers }) => {
@@ -17,10 +17,12 @@ const SignUp = ({ allUsers }) => {
     email: "",
     name: "",
     password: "",
+    confirmPassword: "",
     gender: "",
     role: "user",
   });
   const [errors, setErrors] = useState({});
+  const [successMessage, setSuccessMessage] = useState("");
 
   const validateForm = () => {
     let isValid = true;
@@ -35,7 +37,7 @@ const SignUp = ({ allUsers }) => {
     }
 
     if (!user.name) {
-      newErrors.name = "Name is required"; // Use 'name' here
+      newErrors.name = "Name is required";
       isValid = false;
     }
 
@@ -66,6 +68,7 @@ const SignUp = ({ allUsers }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (validateForm()) {
       try {
         const existingUser = allUsers.find((u) => u.email === user.email);
@@ -74,15 +77,23 @@ const SignUp = ({ allUsers }) => {
         } else {
           const newUser = {
             ...user,
-            id: uuidv4(),
+            id: uuidv4(), // Generate a unique ID for the new user
           };
-          delete newUser.confirmPassword;
+          delete newUser.confirmPassword; // Remove confirmPassword from the object
+
+          // Send a POST request to add the new user to the JSON server
           const response = await axios.post(
-            import.meta.env.VITE_Users,
+            "http://localhost:5000/users",
             newUser
           );
+
           console.log("User registered:", response.data);
-          navigate("/");
+          setSuccessMessage("Registration completed successfully!");
+
+          // Delay navigation to the login page for 2 seconds
+          setTimeout(() => {
+            navigate("/login");
+          }, 2000);
         }
       } catch (error) {
         console.error("Error registering user:", error);
@@ -100,6 +111,11 @@ const SignUp = ({ allUsers }) => {
         <Typography variant="h4" color="blue-gray" className="mb-4">
           Sign Up
         </Typography>
+        {successMessage && (
+          <Typography color="green" className="mb-4">
+            {successMessage}
+          </Typography>
+        )}
         <form
           onSubmit={handleSubmit}
           className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96"
@@ -124,8 +140,8 @@ const SignUp = ({ allUsers }) => {
               <Input
                 size="lg"
                 label="Username"
-                value={user.name} // Correct to 'name'
-                onChange={(e) => setUser({ ...user, name: e.target.value })} // Update user 'name'
+                value={user.name}
+                onChange={(e) => setUser({ ...user, name: e.target.value })}
                 error={errors.name}
               />
               {errors.name && (
