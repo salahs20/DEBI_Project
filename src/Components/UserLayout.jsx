@@ -20,7 +20,7 @@ const UserLayout = ({ allUsers }) => {
   const getUserDetails = () => {
     axios({
       method: "get",
-      url: `http://localhost:3000/users/${localStorage.ok}`,
+      url: `https://brainy-talented-jackal.glitch.me/users/${localStorage.ok}`,
     }).then((info) => setUser(info.data));
   };
 
